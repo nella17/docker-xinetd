@@ -7,10 +7,10 @@ RUN : \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/ \
     && :
-RUN : \
-    && useradd -m pwn \
-    && chown -R root:root /home/pwn \
-    && chmod -R 755 /home/pwn \
-    && :
+
+RUN useradd --shell /bin/false pwn
+COPY --chown=root:root ./xinetd /etc/xinetd.d/pwn
+COPY --chown=root:root ./home/ /home/pwn/
+EXPOSE 8888
 
 ENTRYPOINT ["/usr/sbin/xinetd","-dontfork"]

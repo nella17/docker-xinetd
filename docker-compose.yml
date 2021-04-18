@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+  pwn:
+    image: nella17/xinetd
+    volumes:
+      - ./home:/home/pwn:ro
+      - ./xinetd:/etc/xinetd.d/pwn:ro
+    ports:
+      - "10101:8888"
