@@ -1,4 +1,4 @@
-FROM ubuntu:latest
+FROM ubuntu:tag
 
 RUN : \
     && apt-get update -qq \
